@@ -1,0 +1,13 @@
+dist/
+logs/*
+!logs/.gitkeep
+node_modules
+coverage
+html-report
+npm-debug.log
+coverage.json
+package-lock.json
+.nyc_output/
+*.iml
+.env
+.idea/
