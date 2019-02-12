@@ -41,4 +41,13 @@ export const environment = {
     secret: 'my_secret',
     signature_algorithm: 'HS512',
   },
+  mongoose: {
+    connection: {
+      uri: 'mongodb://mongo:27017/to-do',
+      options: {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+      }
+    }
+  }
 };

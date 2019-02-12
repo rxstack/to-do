@@ -10,6 +10,29 @@ services:
             - ${SOCKETIO_PORT}:4000
         volumes:
             - ${APP_PATH}:/var/www/application
+        links:
+            - mongo
+            - db:mysqldb
+    mongo:
+        image: mongo
+        ports:
+            - 27030:27017
+    db:
+        image: mysql:5.7
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        environment:
+            PMA_ABSOLUTE_URI: http://phpmyadmin.local
+        ports:
+            - "8080:80"
+        links:
+            - db
 
 
 

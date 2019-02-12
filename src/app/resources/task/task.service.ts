@@ -1,6 +1,6 @@
-import {MemoryService} from '@rxstack/memory-service';
 import {Task} from './task';
 import {Injectable} from 'injection-js';
+import {MongooseService} from '@rxstack/mongoose-service';
 
 @Injectable()
-export class TaskService extends MemoryService<Task> { }
+export class TaskService extends MongooseService<Task> { }

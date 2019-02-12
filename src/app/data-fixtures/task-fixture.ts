@@ -9,19 +9,18 @@ export class TaskFixture extends AbstractFixture {
     const service = this.injector.get(TaskService);
     await service.insertMany([
       {
-        '_id': '1',
+        '_id': 't-1',
         'name': 'task-1',
         'createdBy': 'admin',
         'updatedBy': 'admin',
         'assignedTo': 'user',
-        'deletedAt': null
       },
       {
-        '_id': '2',
+        '_id': 't-2',
         'name': 'task-2',
         'createdBy': 'admin',
         'updatedBy': 'admin',
-        'deletedAt': null
+        'assignedTo': null,
       }
     ]);
   }

@@ -1,4 +1,3 @@
-import {Injectable} from 'injection-js';
 import {
   AbstractResourceOperation,
   Operation, OperationEvent,
@@ -10,12 +9,11 @@ import {TaskService} from '../task.service';
 import {
   associateWithCurrentUser,
   queryWithCurrentUser,
-  setNow, softDelete, validate
+  setNow, validate
 } from '@rxstack/platform-callbacks';
 import {TaskPatchInput} from '../validations/task-patch.input';
 import {BadRequestException} from '@rxstack/exceptions';
 
-@Injectable()
 @Operation<ResourceOperationMetadata<Task>>({
   type: ResourceOperationTypesEnum.PATCH,
   name: 'app_task_patch',
@@ -30,7 +28,6 @@ import {BadRequestException} from '@rxstack/exceptions';
       });
     },
     queryWithCurrentUser({idField: 'username', targetField: 'assignedTo'}),
-    softDelete(),
     associateWithCurrentUser({
       idField: 'username',
       targetField: 'updatedBy'

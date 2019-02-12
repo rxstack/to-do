@@ -7,7 +7,7 @@ import {Application} from 'express';
 const cors = require('cors');
 
 @Injectable()
-export class ExpressServerConfigurationListener {
+export class ExpressServerConfigurationObserver {
 
   @Observe(ServerEvents.CONFIGURE)
   async onConfigure(event: ServerConfigurationEvent): Promise<void> {
@@ -18,6 +18,5 @@ export class ExpressServerConfigurationListener {
         .use(cors())
       ;
     }
-
   }
 }

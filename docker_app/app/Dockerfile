@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     python-software-properties \
     curl
 
-RUN curl -sL https://deb.nodesource.com/setup_9.x | bash
+RUN curl -sL https://deb.nodesource.com/setup_11.x | bash
 
 RUN apt-get install -y \
     nodejs

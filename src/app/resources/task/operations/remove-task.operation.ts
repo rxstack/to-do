@@ -1,4 +1,3 @@
-import {Injectable} from 'injection-js';
 import {
   AbstractResourceOperation,
   Operation,
@@ -8,10 +7,9 @@ import {
 import {Task} from '../task';
 import {TaskService} from '../task.service';
 import {
-  restrictToRole, softDelete,
+  restrictToRole,
 } from '@rxstack/platform-callbacks';
 
-@Injectable()
 @Operation<ResourceOperationMetadata<Task>>({
   type: ResourceOperationTypesEnum.REMOVE,
   name: 'app_task_remove',
@@ -19,8 +17,7 @@ import {
   httpPath: '/tasks/:id',
   service: TaskService,
   onPreExecute: [
-    restrictToRole('ROLE_ADMIN'),
-    softDelete()
+    restrictToRole('ROLE_ADMIN')
   ]
 })
 export class RemoveTaskOperation extends AbstractResourceOperation<Task> { }

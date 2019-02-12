@@ -1,7 +1,5 @@
-import {EncoderAwareInterface, PlainTextPasswordEncoder, User as BaseUser} from '@rxstack/security';
+import {User as BaseUser} from '@rxstack/security';
 
-export class User extends BaseUser implements EncoderAwareInterface {
-  getEncoderName(): string {
-    return PlainTextPasswordEncoder.ENCODER_NAME;
-  }
+export class User extends BaseUser {
+  _id: string;
 }

@@ -2,32 +2,21 @@ import {QueryFilterSchema} from '@rxstack/query-filter';
 
 export const taskListUserQueryFilter: QueryFilterSchema = {
   'properties': {
-    'name': {
+    'search': {
       'property_path': 'name',
-      'operators': ['$in', '$eq'],
-      'sort': true
-    },
-    'createdAt': {
-      'property_path': 'createdAt',
-      'operators': ['$gt', '$lt'],
+      'operators': ['$eq'],
+      'replace_operators': [['$eq', '$regex']],
       'transformers': [
-        (value: any) => new Date(value)
-      ],
-      'sort': true
-    },
-    'updatedAt': {
-      'property_path': 'updatedAt',
-      'operators': ['$gt', '$lt'],
-      'transformers': [
-        (value: any) => new Date(value)
+        (value: any) => new RegExp(`${value}`, 'i')
       ],
       'sort': true
     },
     'completed': {
-      'property_path': 'completed',
+      'property_path': 'completedAt',
       'operators': ['$eq'],
+      'replace_operators': [['$eq', '$lte']],
       'transformers': [
-        (value: any) => value === 'true' ? true : false
+        (value: any) => value === 'true' ? new Date() : null
       ],
       'sort': true
     }
